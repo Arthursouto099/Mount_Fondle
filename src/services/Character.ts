@@ -1,6 +1,6 @@
 import { AppDataSource } from "../config/data-source";
 import Character from "../repositories/Character";
-import { CreateCharacterInputs } from "../schemas/character.schema";
+import { CreateCharacterInputs, UpdateCharacterInput } from "../schemas/character.schema";
 
 
 
@@ -20,10 +20,23 @@ export default class CharacterService {
         if (!character) throw new Error("Personagem não encontrado!")
 
         const newHealth = Math.max(character.health - damage)
-        character.health = newHealth 
+        character.health = newHealth
 
         return await this.characterRepository.save(character)
     }
+
+
+    public static async updateCharacter(id: number, data: UpdateCharacterInput) {
+        const character = await this.characterRepository.findOneBy({ id })
+        if (!character) throw new Error("Personagem não encontrado!")
+        
+        Object.assign(character, {
+            ...data,
+        })
+
+        return await this.characterRepository.save(character)
+    }
+
 
 
 
