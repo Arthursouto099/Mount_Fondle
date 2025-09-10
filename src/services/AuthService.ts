@@ -36,9 +36,28 @@ export class UserService {
         return clone
     }
 
-    async update(id:number, data:Partial<User>){
-        const user = await this.repo.findOne({where: {id}})
+    async update(id: number, data: Partial<User>) {
+        const user = await this.repo.findOne({ where: { id } })
 
-        if(!user) throw new Error
+        if (!user) throw new Error('Usuario não encontrado');
+
+        if (data.password) {
+            user.password = data.password;
+        }
+        const { password, ...rest } = data
+        Object.assign(user, rest)
+        return await this.repo.save(user)
+    }
+
+    async remove(id: number) {
+        const user = await this.repo.findOne({ where: { id } })
+        if (!user) throw new Error("usuario não encontrado")
+
+        await this.repo.remove(user)
+
+        return { message: 'usuario removido' }
+    }
+    async findByEmail(email: string) {
+        return this.repo.findOne({ where: { email } })
     }
 }

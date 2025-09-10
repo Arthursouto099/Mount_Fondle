@@ -7,7 +7,7 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ unique:true , length:160})
+    @Column({ unique: true, length: 160 })
     email: string
 
     @Column()
@@ -24,11 +24,9 @@ export class User {
         }
     }
 
-    async validatePassword(plain:string) : Promise<boolean>{
-        return bcrypt.compare(plain,this.password)
+    async validatePassword(plain: string): Promise<boolean> {
+        return bcrypt.compare(plain, this.password)
     }
-
-    
 
 }
 
