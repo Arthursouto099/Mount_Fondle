@@ -37,6 +37,9 @@ export default class CharacterService {
         return await this.characterRepository.save(character)
     }
 
+    public static async findCharacterById(id: number) {
+        return await this.characterRepository.findOneBy({id}) ?? null
+    }
 
 
 

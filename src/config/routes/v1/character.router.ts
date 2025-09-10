@@ -7,7 +7,8 @@ import { attackCharacterInputs, createCharacterInputs, updateCharacterInputs } f
 const  characterRouter = Router()
 
 characterRouter.post("/", checkSchema(createCharacterInputs) ,CharacterController.createCharacter )
-characterRouter.patch("/damage", checkSchema(attackCharacterInputs), CharacterController.applyDamage)
-characterRouter.put("/update", checkSchema(updateCharacterInputs), CharacterController.updateCharacter)
+characterRouter.patch("/damage/:id", checkSchema(attackCharacterInputs), CharacterController.applyDamage)
+characterRouter.put("/update/:id", checkSchema(updateCharacterInputs), CharacterController.updateCharacter)
+characterRouter.get("/:id", CharacterController.findCharacter)
 
 export default characterRouter

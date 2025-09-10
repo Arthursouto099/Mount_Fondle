@@ -21,4 +21,9 @@ export default class CharacterController {
         const updated = await CharacterService.updateCharacter(Number(req.params.id), req.body)
         res.status(201).json({ message: "Personagem editado com sucesso", data: updated, success: true })
     }
+
+     public static async findCharacter(req: Request, res: Response) {
+        const find = await CharacterService.findCharacterById(Number(req.params.id))
+        res.status(201).json({ message: "Personagem encontrado com sucesso", data: find, success: true })
+    }
 }
