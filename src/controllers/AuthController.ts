@@ -6,7 +6,7 @@ const service = new UserService()
 
 export class AuthController {
 
-    public static async register(req: Request, res: Response) {
+    async register(req: Request, res: Response) {
         try {
             const user = await service.create(req.body)
             res.status(201).json(user)
@@ -16,7 +16,7 @@ export class AuthController {
 
     }
 
-    public static async login(req: Request, res: Response) {
+    async login(req: Request, res: Response) {
         try {
             const { email, password } = req.body
             const user = await service.findByEmail(email)
