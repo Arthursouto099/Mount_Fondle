@@ -4,6 +4,7 @@ import "dotenv/config"
 import { AppDataSource } from "./config/data-source"
 import routerApp from "./config/routes/router.main"
 import GlobalErrorHandler from "./middlewares/GlobalErrorHandler"
+import cors from 'cors'
 
 
 const app: Application = express()
@@ -14,6 +15,7 @@ const port: number = Number(process.env.PORT) ?? 3307
 app.use(express.json())
 app.use(routerApp)
 app.use(GlobalErrorHandler)
+app.use(cors())
 
 
 AppDataSource.initialize()
