@@ -5,10 +5,10 @@ import {userLogin} from '../../dtos/LoginUSerDTOs';
 import { validateDTO } from "../../middlewares/UserValidateDTO";
 
 
-const router = Router();
+const UserRouter = Router();
 const controller = new AuthController()
 
-router.post('/register',validateDTO(createUserDTO),controller.register.bind(controller))
-router.post('/login',validateDTO(userLogin),controller.login.bind(controller))
+UserRouter.post('/register',validateDTO(createUserDTO),controller.register.bind(controller))
+UserRouter.post('/login',validateDTO(userLogin),controller.login.bind(controller))
 
-export default router;
+export default UserRouter;
