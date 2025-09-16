@@ -8,14 +8,13 @@ import cors from 'cors'
 
 
 const app: Application = express()
-const port: number = Number(process.env.PORT) ?? 3307
+const port: number = Number(process.env.PORT) || 3306
 
-
-
+app.use(cors())
 app.use(express.json())
 app.use(routerApp)
 app.use(GlobalErrorHandler)
-app.use(cors())
+
 
 
 AppDataSource.initialize()

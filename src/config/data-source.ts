@@ -12,7 +12,7 @@ const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
 export const AppDataSource = new DataSource({
     type: "mysql",
-    port: Number(DB_PORT ?? 3306),
+    port: Number(DB_PORT || 3306),
     username: DB_USER,
     password: DB_PASSWORD ?? "root",
     database: DB_NAME,
