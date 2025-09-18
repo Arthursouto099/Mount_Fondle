@@ -1,7 +1,6 @@
-import { Request, Response, NextFunction } from "express";
+import {  Response, NextFunction } from "express";
 import { Payload, verifyToken } from "../utils/jwt";
 import { CustomRequest } from "../types/customizedTypes";
-import { email } from "zod";
 
 
 export default function authMiddleware(req: CustomRequest, res: Response, next: NextFunction) {

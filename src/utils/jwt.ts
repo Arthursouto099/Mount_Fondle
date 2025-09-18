@@ -3,13 +3,12 @@ import jwt from "jsonwebtoken"
 export interface Payload {
     id: number;
     email: string;
-   
 }
 
 
 export const generateToken = (payload: Payload) => {
     return jwt.sign(payload, process.env.JWT_SECRET!,
-        { expiresIn: Number(process.env.Jwt_EXPIRES_IN) }
+        { expiresIn: Number(process.env.JWT_EXPIRES_IN || '1d') }
     )
 }
 
