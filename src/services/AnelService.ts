@@ -10,6 +10,13 @@ export class AnelServices{
         const anelVerifiction = data
         if(!anelVerifiction) throw new Error('anel não pode ser invalido');
 
+        const anelJaCriado = await this.anelRepository.findOne({where: {name: data.name}})
+
+        if(anelJaCriado!){
+            anelJaCriado.quantidade + 1
+           return await this.anelRepository.save(anelJaCriado)
+        }
+
         const anel = this.anelRepository.create(anelVerifiction)
         return await this.anelRepository.save(anel)
     }
@@ -30,4 +37,6 @@ export class AnelServices{
      await this.anelRepository.remove(anel)
         return { message: "anel removido"}
     }
+
+
 }
