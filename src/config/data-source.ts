@@ -6,6 +6,7 @@ import "dotenv/config"
 import {DataSource} from "typeorm"
 import Character from '../repositories/Character';
 import { User } from '../repositories/User';
+import {AnelHistory} from "../repositories/AnelHistory"
 
 const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
@@ -22,5 +23,5 @@ export const AppDataSource = new DataSource({
     logging: true,
 
     // entidades para criar o mapeamento
-    entities: [Character, User]
+    entities: [Character, User, AnelHistory]
 })
