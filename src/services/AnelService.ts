@@ -12,8 +12,9 @@ export class AnelServices{
 
         const anelJaCriado = await this.anelRepository.findOne({where: {name: data.name}})
 
-        if(anelJaCriado!){
-            anelJaCriado.quantidade + 1
+        if(anelJaCriado){
+            anelJaCriado.quantidade += 1
+            console.log(anelJaCriado)
            return await this.anelRepository.save(anelJaCriado)
         }
 
