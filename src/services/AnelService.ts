@@ -12,6 +12,7 @@ export class AnelServices{
     async createAnel(data: {name: string, descricao: string, quantidade: number} ){
         const anelExistente = await this.anelRepository.findOneBy({name: data.name, descricao: data.descricao})
 
+
         if(!anelExistente) {
             const anel = this.anelRepository.create(data)
             return await this.anelRepository.save(anel)
@@ -24,6 +25,7 @@ export class AnelServices{
 
     async findAllRings(){
         return await this.anelRepository.find() ??  []
+
     }
 
     async findId(id: number){
@@ -42,4 +44,6 @@ export class AnelServices{
         await this.anelRepository.remove(anel)
         return { message: "anel removido"}
     }
+
+
 }
