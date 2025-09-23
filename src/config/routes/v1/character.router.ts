@@ -11,4 +11,5 @@ characterRouter.patch("/damage/:id", checkSchema(attackCharacterInputs), Charact
 characterRouter.put("/update/:id", checkSchema(updateCharacterInputs), CharacterController.updateCharacter)
 characterRouter.get("/:id", CharacterController.findCharacter)
 
+
 export default characterRouter

@@ -7,6 +7,7 @@ export default function authMiddleware(req: CustomRequest, res: Response, next: 
 
     const header = req.headers.authorization
 
+
     const token = header?.split(" ")[1]
 
     if(!token) {

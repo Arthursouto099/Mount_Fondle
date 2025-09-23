@@ -24,7 +24,12 @@ export default class CharacterService {
 
         return await this.characterRepository.save(character)
     }
+    
 
+    public static async findUserById(id: number) {
+        return this.characterRepository.find({where: {id}})
+
+    } 
 
     public static async updateCharacter(id: number, data: UpdateCharacterInput) {
         const character = await this.characterRepository.findOneBy({ id })

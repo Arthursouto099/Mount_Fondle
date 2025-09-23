@@ -11,7 +11,7 @@ routerApp.get("/ping", (req,res) => {
 })
 
 
-routerApp.use("/character", authMiddleware, characterRouter)
+routerApp.use("/character", characterRouter)
 routerApp.use("/auth", UserRouter )
 routerApp.use("/anel", routerAnel)
 
