@@ -13,6 +13,6 @@ routerApp.get("/ping", (req,res) => {
 
 routerApp.use("/character", authMiddleware, characterRouter)
 routerApp.use("/auth", UserRouter )
-routerApp.use("/anel",authMiddleware, routerAnel)
+routerApp.use("/anel", routerAnel)
 
 export default routerApp

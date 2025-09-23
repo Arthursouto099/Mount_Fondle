@@ -7,7 +7,10 @@ export default class Character {
     @PrimaryGeneratedColumn()
     id: number
     @Column({ length: 60, nullable: false })
+
     name: string
+
+    
     @Column({ nullable: false, default: 100 })
     health: number
     @Column({ nullable: false, default: 0 })
