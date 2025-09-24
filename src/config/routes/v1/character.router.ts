@@ -10,6 +10,8 @@ characterRouter.post("/", checkSchema(createCharacterInputs) ,CharacterControlle
 characterRouter.patch("/damage/:id", checkSchema(attackCharacterInputs), CharacterController.applyDamage)
 characterRouter.put("/update/:id", checkSchema(updateCharacterInputs), CharacterController.updateCharacter)
 characterRouter.get("/:id", CharacterController.findCharacter)
+characterRouter.patch("/:id", CharacterController.incrementDeaths)
+characterRouter.patch("/defeated/:id", CharacterController.incrementDefeatedBosses)
 
 
 export default characterRouter

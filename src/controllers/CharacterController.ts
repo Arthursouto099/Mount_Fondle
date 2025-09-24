@@ -10,10 +10,18 @@ export default class CharacterController {
         res.status(201).json({ message: "Personagem criado com sucesso", data, success: true })
     }
 
-    public static async findCharacterById(req: Request, res: Response) {
-        if(req.params.id) res.status(401).json({message: "Parametro id não fornecido"})
-        const data = await CharacterService.findCharacterById(parseInt(req.params.id))
-        res.status(200).json({data: data})
+  
+
+
+    public static async incrementDeaths(req: Request, res: Response) {
+        if(!req.params.id) res.status(400).json({message: "id não fornecido"})
+        const updatedDeaths = await CharacterService.incrementDeaths(parseInt(req.params.id))
+        res.status(200).json({message: "morte aumentou em 1+", data: updatedDeaths, success: true})
+    }
+    public static async incrementDefeatedBosses(req: Request, res: Response) {
+        if(!req.params.id) res.status(400).json({message: "id não fornecido"})
+        const updatedDeaths = await CharacterService.incrementDefeatedBosses(parseInt(req.params.id))
+        res.status(200).json({message: "bosses aumentou em 1+", data: updatedDeaths, success: true})
     }
 
     public static async applyDamage(req: Request, res: Response) {

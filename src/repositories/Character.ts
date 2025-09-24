@@ -15,12 +15,16 @@ export default class Character {
     health: number
     @Column({ nullable: false, default: 0 })
     attack: number
+    
 
-    @Column({nullable: false, default: 0})
+    @Column({nullable: true, default: 0}) 
     deaths: number
 
     @Column({nullable: true, default: 0})
-    defeatebosses: number
+    defeatedBosses: number
+
+
+    
 
     constructor(name: string, health?: number, attack?: number) {
         this.name = name
