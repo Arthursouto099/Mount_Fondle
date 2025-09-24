@@ -6,14 +6,15 @@ import { CreateCharacterInputs, UpdateCharacterInput } from "../schemas/characte
 
 
 export default class CharacterService {
-    static characterRepository = AppDataSource.getRepository(Character)
-
+    static characterRepository = AppDataSource.getRepository(Character) // 
+    
+    //recebe um objeto ja validado em vida e attk
     public static async createCharacter(data: CreateCharacterInputs): Promise<Character> {
         const appCharacterData = this.characterRepository.create(data)
         return await this.characterRepository.save(appCharacterData)
     }
 
-
+    
     public static async applyDamage(id: number, damage: number): Promise<Character> {
         const character = await this.characterRepository.findOneBy({ id })
 
