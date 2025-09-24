@@ -14,6 +14,20 @@ export default class CharacterService {
     }
 
 
+    public static async incrementDeaths(id: number) {
+        const character = await this.characterRepository.findOneBy({id})
+        if(!character) throw new Error("character não encontrado")
+        character.deaths += 1;
+        return await this.characterRepository.save(character)
+    }
+
+    public static async incrementDefeatedBosses(id: number) {
+        const character = await this.characterRepository.findOneBy({id})
+        if(!character) throw new Error("character não encontrado")
+        character.defeatedBosses += 1;
+        return await this.characterRepository.save(character)
+    }
+
     public static async applyDamage(id: number, damage: number): Promise<Character> {
         const character = await this.characterRepository.findOneBy({ id })
 

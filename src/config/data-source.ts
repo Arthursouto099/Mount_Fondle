@@ -19,8 +19,10 @@ export const AppDataSource = new DataSource({
     database: DB_NAME,
     host: DB_HOST,
     // somente em desenvolvimento, somente cria as tabelas automaticamente
-    synchronize: false,
-    logging: true,
+    dropSchema: true,
+    synchronize: true,
+    logging: true,   
+  
 
     // entidades para criar o mapeamento
     entities: [Character, User, AnelHistory]
